@@ -1,9 +1,13 @@
 import React from 'react';
 
+import List from './components/List';
+
 import './App.css';
 
-function App() {
-  return <div className="App">hello react!</div>;
-}
+const App = () => (
+  <div className="app">
+    <List />
+  </div>
+);
 
 export default App;
