@@ -40,6 +40,7 @@ class List extends React.Component {
 
   render() {
     const { data, isFetching, sort } = this.state;
+
     return (
       <div className="posts">
         {isFetching ? (
