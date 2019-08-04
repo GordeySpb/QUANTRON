@@ -6,6 +6,15 @@ import Posts from '../Posts';
 
 const URL =  'https://api.stackexchange.com/2.2/search?intitle=react&site=stackoverflow';
 
+const compose = (items) => {
+  const filteredItems = filter(
+    items,
+    ({ is_answered, owner: { reputation } }) => is_answered && reputation >= 50,
+  );
+
+  return orderBy(filteredItems, ['creation_date'], ['desc']);
+};
+
 class List extends React.Component {
   state = {
     data: [],
@@ -16,14 +25,9 @@ class List extends React.Component {
   componentDidMount() {
     fetch(URL)
       .then(data => data.json())
-      /* eslint-disable indent */
-      .then(({ items }) => filter(
-          items,
-          ({ is_answered, owner: { reputation } }) => is_answered && reputation >= 50,
-        ),)
-      .then(filteredItems => orderBy(filteredItems, ['creation_date'], ['desc']),)
-      .then(filteredAndSortedItems => this.setState({
-          data: filteredAndSortedItems,
+      .then(({ items }) => compose(items))
+      .then(data => this.setState({
+          data,
           isFetching: false,
         }),);
   }
