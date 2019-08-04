@@ -23,7 +23,11 @@ const Posts = ({ posts, sort, onSort }) => (
       {posts.map(({ link, title, owner: { profile_image } }) => (
         <li className="list__item" key={posts.question_id}>
           <a className="post" href={link}>
-            <img className="post__avatar" src={profile_image} alt="avatar" />
+            <img
+              className="post__avatar"
+              src={profile_image || ''}
+              alt="avatar"
+            />
             <div className="post__title">{title}</div>
           </a>
         </li>
