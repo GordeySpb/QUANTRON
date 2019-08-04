@@ -19,9 +19,9 @@ const Posts = ({ posts, sort, onSort }) => (
         onClick={() => (sort === 'asc' ? onSort('desc') : onSort('asc'))}
       />
     </div>
-    <ul className="list">
+    <ul className="posts-list">
       {posts.map(({ link, title, owner: { profile_image } }) => (
-        <li className="list__item" key={posts.question_id}>
+        <li className="posts-list__item" key={posts.question_id}>
           <a className="post" href={link}>
             <img
               className="post__avatar"

@@ -33,7 +33,7 @@ a {
   background-color: gray;
 }
 
-.posts {
+.list {
   width: 40%;
   height: 100%;
   display: flex;
@@ -57,7 +57,7 @@ a {
   outline: none;
 }
 
-.list {
+.posts-list {
   display: flex;
   flex-direction: column;
   height: 700px;
@@ -65,7 +65,7 @@ a {
   padding: 0 20px;
 }
 
-.list__item {
+.posts-list__item {
   height: 40px;
   display: flex;
 }
@@ -87,37 +87,37 @@ a {
 }
 
 @media (max-width: 320px) {
-  .posts {
+  .list {
     width: 100%;
   }
 }
 
 @media (max-width: 480px) {
-  .posts {
+  .list {
     width: 90%;
   }
 }
 
 @media (max-width: 768px) {
-  .posts {
+  .list {
     width: 90%;
   }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-  .posts {
+  .list {
     width: 90%;
   }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
-  .posts {
+  .list {
     width: 90%;
   }
 }
 
 @media (min-width: 1200px) {
-  .posts {
+  .list {
     width: 50%;
   }
 }
