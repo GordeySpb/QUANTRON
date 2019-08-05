@@ -28,7 +28,8 @@ class List extends React.Component {
       .then(posts => this.setState({
           posts,
           isFetching: false,
-        }),);
+        }),)
+      .catch(error => console.error(error));
   }
 
   handleSort = (sortName) => {
