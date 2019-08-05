@@ -1,6 +1,5 @@
 import React from 'react';
-import filter from 'lodash/filter';
-import orderBy from 'lodash/orderBy';
+import { orderBy, filter } from 'lodash';
 
 import Posts from '../Posts';
 
@@ -17,7 +16,7 @@ const compose = (items) => {
 
 class List extends React.Component {
   state = {
-    data: [],
+    posts: [],
     isFetching: true,
     sort: 'desc',
   };
@@ -26,31 +25,31 @@ class List extends React.Component {
     fetch(URL)
       .then(data => data.json())
       .then(({ items }) => compose(items))
-      .then(data => this.setState({
-          data,
+      .then(posts => this.setState({
+          posts,
           isFetching: false,
         }),);
   }
 
   handleSort = (sortName) => {
-    const { data } = this.state;
-    const sortedItems = orderBy(data, ['creation_date'], [`${sortName}`]);
+    const { posts } = this.state;
+    const sortedItems = orderBy(posts, ['creation_date'], [`${sortName}`]);
 
     this.setState({
-      data: sortedItems,
+      posts: sortedItems,
       sort: sortName,
     });
   };
 
   render() {
-    const { data, isFetching, sort } = this.state;
+    const { posts, isFetching, sort } = this.state;
 
     return (
       <div className="list">
         {isFetching ? (
           <div>Loading...</div>
         ) : (
-          <Posts posts={data} sort={sort} onSort={this.handleSort} />
+          <Posts posts={posts} sort={sort} onSort={this.handleSort} />
         )}
       </div>
     );
